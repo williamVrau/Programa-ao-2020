@@ -1,0 +1,13 @@
+{%extends "base.html"%}
+
+{%block corpo%}
+<h1>teste</h1>
+<a href="/logar">Login</a>
+<a href="/cadastro">Cadastrar</a>
+{%block logout%}
+{% if current_user.is_authenticated%}
+    <a href="/logout">Sair</a>  
+    </form>
+{%endif%}
+{%endblock%}
+{%endblock%}

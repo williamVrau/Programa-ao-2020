@@ -28,8 +28,8 @@ def incluir_carros():
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
-@app.route("/excluir_carro/<int:pessoa_id>", methods=['DELETE'])
-def excluir_pessoa(carro_id):
+@app.route("/excluir_carro/<int:carros_id>", methods=['DELETE'])
+def excluir_carro(carro_id):
     resposta = jsonify({"resultado": "ok", "detalhes": "ok"})
     try:
         Carro.query.filter(Carro.id == carro_id).delete()

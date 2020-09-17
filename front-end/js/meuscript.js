@@ -3,7 +3,7 @@ $(function() {
 
     function exibir_carros() {
         $.ajax({
-            url: 'http://localhost:5000/listar_pessoas',
+            url: 'http://localhost:5000/listar_carros',
             method: 'GET',
             dataType: 'json', 
             success: listar, 
@@ -20,7 +20,7 @@ $(function() {
                 '<td>' + carros[i].modelo + '</td>' + 
                 '<td>' + carros[i].ano + '</td>' + 
                 '<td><a href=# id="excluir_' + carros[i].id + '" ' + 
-                  'class="excluir_pessoa"><img src="img/excluir.png"></a>' + 
+                  'class="excluir_carro"><img src="img/excluir.png"></a>' + 
                 '</td>' + 
                 '</tr>';
                 $('#corpoTabelaCarros').append(lin);
@@ -28,24 +28,24 @@ $(function() {
         }
     }
     function mostrar_conteudo(identificador) {
-        $("#tabelaPessoas").addClass('invisible');
+        $("#tabelaCarros").addClass('invisible');
         $("#conteudoInicial").addClass('invisible');
         $("#"+identificador).removeClass('invisible');      
     }
-    $(document).on("click", "#linkListarPessoas", function() {
+    $(document).on("click", "#linkListarCarros", function() {
         exibir_carros();
     });
     $(document).on("click", "#linkInicio", function() {
         mostrar_conteudo("conteudoInicial");
     });
 
-    $(document).on("click", "#btIncluirPessoa", function() {
+    $(document).on("click", "#btIncluirCarro", function() {
         nome = $("#campoNome").val();
         modelo = $("#campoModelo").val();
         ano = $("#campoAno").val();
         var dados = JSON.stringify({ nome: nome, modelo: modelo, ano: ano });
         $.ajax({
-            url: 'http://localhost:5000/incluir_pessoa',
+            url: 'http://localhost:5000/incluir_carro',
             type: 'POST',
             dataType: 'json', 
             contentType: 'application/json', 
@@ -55,7 +55,7 @@ $(function() {
         });
         function carroIncluida (retorno) {
             if (retorno.resultado == "ok") { 
-                alert("Pessoa incluída com sucesso!");
+                alert("Carro incluída com sucesso!");
                 $("#campoNome").val("");
                 $("#campoModelo").val("");
                 $("#campoAno").val("");
@@ -67,18 +67,18 @@ $(function() {
             alert("ERRO: "+retorno.resultado + ":" + retorno.detalhes);
         }
     });
-    $('#modalIncluirPessoa').on('hide.bs.modal', function (e) {
-        if (! $("#tabelaPessoas").hasClass('invisible')) {
-            exibir_pessoas();
+    $('#modalIncluirCarro').on('hide.bs.modal', function (e) {
+        if (! $("#tabelaCarros").hasClass('invisible')) {
+            exibir_carros();
         }
     });
     mostrar_conteudo("conteudoInicial");
     $(document).on("click", ".excluir_carro", function() {
         var componente_clicado = $(this).attr('id'); 
         var nome_icone = "excluir_";
-        var id_pessoa = componente_clicado.substring(nome_icone.length);
+        var id_carro = componente_clicado.substring(nome_icone.length);
         $.ajax({
-            url: 'http://localhost:5000/excluir_pessoa/'+id_pessoa,
+            url: 'http://localhost:5000/excluir_carro/'+id_carro,
             type: 'DELETE', 
             dataType: 'json', 
             success: carroExcluida, 
@@ -86,8 +86,8 @@ $(function() {
         });
         function carroExcluida (retorno) {
             if (retorno.resultado == "ok") { 
-                $("#linha_" + id_pessoa).fadeOut(1000, function(){
-                    alert("Pessoa removida com sucesso!");
+                $("#linha_" + id_carro).fadeOut(1000, function(){
+                    alert("Carro removida com sucesso!");
                 });
             } else {
                 alert(retorno.resultado + ":" + retorno.detalhes);

@@ -20,9 +20,9 @@
                     <span class="navbar-text">Cadastro de carros</span>
                     <a class="nav-item nav-link" href="#" id="linkInicio">Início
                         <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="#" id="linkListarPessoas">Listar</a>
+                    <a class="nav-item nav-link" href="#" id="linkListarCarros">Listar</a>
                     <a class="nav-item nav-link" data-toggle="modal" 
-                        data-target="#modalIncluirPessoa" href="#">Incluir</a>
+                        data-target="#modalIncluirCarro" href="#">Incluir</a>
                 </div>
             </div>
 
@@ -38,12 +38,12 @@
             <div id="conteudoInicial" class="invisible">
                 Bem vindo ao cadastro de carros.
             </div>
-            <div class="modal fade" id="modalIncluirPessoa" tabindex="-1" role="dialog"
+            <div class="modal fade" id="modalIncluirCarro" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Incluir pessoa</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir carro</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -75,13 +75,13 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button id="btIncluirPessoa" type="button" class="btn btn-primary">Incluir</button>
+                            <button id="btIncluirCarro" type="button" class="btn btn-primary">Incluir</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <table class="table invisible table-striped table-hover" id="tabelaPessoas">
+            <table class="table invisible table-striped table-hover" id="tabelaCarros">
                 <thead>
                     <tr>
                         <th scope="col">Nome</th>

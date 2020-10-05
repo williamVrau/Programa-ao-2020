@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Cadastro de Carros</title>
+    <title>Cadastro de carros</title>
 </head>
 
 <body>
@@ -14,15 +16,16 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
 
+            <img src="img/carro.png" height="60px" class="navbar-brand rounded-circle">
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav mr-auto">
-                    <span class="navbar-text">Cadastro de carros</span>
+                    <span class="navbar-text">Cadastro de Carros</span>
                     <a class="nav-item nav-link" href="#" id="linkInicio">Início
                         <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="#" id="linkListarCarros">Listar</a>
                     <a class="nav-item nav-link" data-toggle="modal" 
-                        data-target="#modalIncluirCarro" href="#">Incluir</a>
+                        data-target="#modalIncluirCarros" href="#">Incluir</a>
                 </div>
             </div>
 
@@ -36,9 +39,11 @@
         <div id="corpoDaPagina">
 
             <div id="conteudoInicial" class="invisible">
-                Bem vindo ao cadastro de carros.
+                Bem vindo ao cadastro de Carros.
             </div>
-            <div class="modal fade" id="modalIncluirCarro" tabindex="-1" role="dialog"
+
+            <!-- janela modal de inclusão de carros -->
+            <div class="modal fade" id="modalIncluirCarros" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -54,35 +59,37 @@
                                     <label for="campoNome">Nome</label>
                                     <input type="text" class="form-control" id="campoNome"
                                         aria-describedby="nomeHelp" placeholder="Nome">
-                                    <small id="nomeHelp" class="form-text text-muted">Informe onome completo do veiculo, sem
+                                    <small id="nomeHelp" class="form-text text-muted">Informe o seu nome completo, sem
                                         abreviações.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="campoModelo">Modelo</label>
                                     <input type="text" class="form-control" id="campoModelo"
-                                        aria-describedby="modeloHelp" placeholder="Modelo">
-                                    <small id="modeloHelp" class="form-text text-muted">Seu modelo será 
-                                        utilizado apenas em nosso sistema.</small>
+                                        aria-describedby="ModeloHelp" placeholder="Modelo">
+                                    <small id="ModeloHelp" class="form-text text-muted">Modelo será 
+                                        utilizado apenas para contato em nosso sistema.</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="campoAno">Telefone</label>
+                                    <label for="campoAno">Ano</label>
                                     <input type="text" class="form-control" id="campoAno"
-                                        aria-describedby="anoHelp" placeholder="Ano">
-                                    <small id="anoHelp" class="form-text text-muted">Informe o ano do veiculo.</small>
+                                        aria-describedby="AnoHelp" placeholder="Ano">
+                                    <small id="AnoHelp" class="form-text text-muted">Informe o Ano.</small>
                                 </div>
                             </form>
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button id="btIncluirCarro" type="button" class="btn btn-primary">Incluir</button>
+                            <button id="btIncluirCarros" type="button" class="btn btn-primary">Incluir</button>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- tabela de listagem de carros -->
             <table class="table invisible table-striped table-hover" id="tabelaCarros">
                 <thead>
+                    <!-- primeira linha da tabela: títulos -->
                     <tr>
                         <th scope="col">Nome</th>
                         <th scope="col">Modelo</th>
@@ -91,11 +98,11 @@
                     </tr>
                 </thead>
                 <tbody id="corpoTabelaCarros">
-
+                    <!-- aqui serão exibidas as carros -->
                 </tbody>
             </table>
 
-        </div>
+        </div> <!-- fim da div corpo da página -->
     </div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

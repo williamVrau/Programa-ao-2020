@@ -1,16 +1,12 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Cadastro de carros</title>
+    <title>Cadastro de Pedidos de Carros</title>
 </head>
-
 <body>
     <div class="container">
 
@@ -20,12 +16,25 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav mr-auto">
-                    <span class="navbar-text">Cadastro de Carros</span>
+                    <span class="navbar-text">Compra e venda</span>
+
                     <a class="nav-item nav-link" href="#" id="linkInicio">Início
                         <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="#" id="linkListarCarros">Listar</a>
-                    <a class="nav-item nav-link" data-toggle="modal" 
-                        data-target="#modalIncluirCarros" href="#">Incluir</a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" 
+                        id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                        aria-haspopup="true" aria-expanded="false">
+                          Cadastros
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="#" id="linkListarUsuarios">Usuario</a>
+                          <a class="dropdown-item" href="#">Pedidos</a> 
+                        </div>
+                    </li>
+
+                    <a class="nav-item nav-link" href="#" id="linkListarPedidosRealizados">Pedidos realizados</a>
+                    
                 </div>
             </div>
 
@@ -37,18 +46,16 @@
         </nav>
 
         <div id="corpoDaPagina">
-
-            <div id="conteudoInicial" class="invisible">
-                Bem vindo ao cadastro de Carros.
+            <div id="conteudoInicial">
+                Bem vindo ao cadastro de Usuarios.
             </div>
-
-            <!-- janela modal de inclusão de carros -->
-            <div class="modal fade" id="modalIncluirCarros" tabindex="-1" role="dialog"
+            <!-- janela modal de inclusão de pessoa -->
+            <div class="modal fade" id="modalIncluirUsuarios" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Incluir carro</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir Usuario</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -63,49 +70,60 @@
                                         abreviações.</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="campoModelo">Modelo</label>
-                                    <input type="text" class="form-control" id="campoModelo"
-                                        aria-describedby="ModeloHelp" placeholder="Modelo">
-                                    <small id="ModeloHelp" class="form-text text-muted">Modelo será 
+                                    <label for="campoEmail">Email</label>
+                                    <input type="text" class="form-control" id="campoEmail"
+                                        aria-describedby="emailHelp" placeholder="Email">
+                                    <small id="emailHelp" class="form-text text-muted">Seu email será 
                                         utilizado apenas para contato em nosso sistema.</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="campoAno">Ano</label>
-                                    <input type="text" class="form-control" id="campoAno"
-                                        aria-describedby="AnoHelp" placeholder="Ano">
-                                    <small id="AnoHelp" class="form-text text-muted">Informe o Ano.</small>
                                 </div>
                             </form>
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button id="btIncluirCarros" type="button" class="btn btn-primary">Incluir</button>
+                            <button id="btIncluirUsuario" type="button" class="btn btn-primary">Incluir</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="container" id="cadastroUsuarios">
+                <h5>Cadastro de Usuario</h5>
+                <a class="nav-item nav-link" data-toggle="modal" 
+                data-target="#modalIncluirUsuario" href="#"><img src="img/incluir.png" title="Incluir Usuario"></a>
+                <table class="table table-striped table-hover" id="tabelaUsuarios">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabelaUsuarios">
+                    </tbody>
+                </table>
+            </div>
+            <div class="container" id="cadastroPedidosRealizados">
+                <h5>Pedidos Realizados</h5>
+                <a class="nav-item nav-link" data-toggle="modal" 
+                data-target="#modalIncluirPedidoRealizado" href="#">
+                  <img src="img/incluir.png" title="Incluir Pedidos Realizados"></a>
+                <table class="table table-striped table-hover" id="tabelaPedidosRealizados">
+                    <thead>
+                        <tr>
+                            <th scope="col">Data</th>
+                            <th scope="col">Resultado</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Desejo</th>
+                            <th scope="col">Valor de referência</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabelaPedidosRealizados">
+                    </tbody>
+                </table>
+            </div>
 
-            <!-- tabela de listagem de carros -->
-            <table class="table invisible table-striped table-hover" id="tabelaCarros">
-                <thead>
-                    <!-- primeira linha da tabela: títulos -->
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Modelo</th>
-                        <th scope="col">Ano</th>
-                        <th scope="col">Operações</th>
-                    </tr>
-                </thead>
-                <tbody id="corpoTabelaCarros">
-                    <!-- aqui serão exibidas as carros -->
-                </tbody>
-            </table>
-
-        </div> <!-- fim da div corpo da página -->
+        </div>
     </div>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -113,7 +131,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <!-- código específico do front-end -->
     <script src="js/meuscript.js"></script>
 </body>
 

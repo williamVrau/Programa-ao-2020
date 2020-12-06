@@ -126,4 +126,77 @@ $(function() {
     $(document).on("click", "#linkListarPedidosRealizados", function() {
         exibir_pedidos_realizados();
     });
+
+    function carregarCombo(combo_id, nome_classe) {
+        $.ajax({
+            url: 'http://localhost:5000/listar/'+nome_classe,
+            method: 'GET',
+            dataType: 'json', // os dados são recebidos no formato json
+            success: carregar, // chama a função listar para processar o resultado
+            error: function(problema) {
+                alert("erro ao ler dados, verifique o backend: ");
+            }
+        });
+        function carregar (dados) {
+            // esvaziar o combo
+            $('#'+combo_id).empty();
+            // mostra ícone carregando...
+            $('#loading_'+combo_id).removeClass('d-none');
+            // percorrer a lista de dados
+            for (var i in dados) { //i vale a posição no vetor
+                $('#'+combo_id).append(
+                    $('<option></option>').attr("value", 
+                        dados[i].id).text(dados[i].nome));
+            }
+            // espera um pouco, para ver o ícone "carregando"
+            setTimeout(() => { 
+                $('#loading_'+combo_id).addClass('d-none');
+             }, 1000);
+        }
+    }
+
+    $('#modalIncluirPedidoRealizado').on('shown.bs.modal', function (e) {
+        // carregar as listas de pessoas e
+        carregarCombo("campoUsuarioId", "Usuario");
+        carregarCombo("campoPedidoId", "Pedidos");
+    })
+
+     // incluir exe realizado
+     $(document).on("click", "#btIncluirPedidoRealizado", function() {
+        //pegar dados da tela
+        data = $("#campoData").val();
+        resultado = $("#campoResultado").val();
+        usuario_id = $("#campoUsuarioId").val();
+        pedido_id = $("#campoPedidoId").val();
+        // preparar dados no formato json
+        var dados = JSON.stringify({ data: data, resultado: resultado, usuario_id: usuario_id, pedido_id: pedido_id });
+        // fazer requisição para o back-end
+        $.ajax({
+            url: 'http://localhost:5000/incluir_pedidos_realizado',
+            type: 'POST',
+            dataType: 'json', // os dados são recebidos no formato json
+            contentType: 'application/json', // tipo dos dados enviados
+            data: dados, // estes são os dados enviados
+            success: dadosIncluidos, // chama a função listar para processar o resultado
+            error: erroAoIncluir
+        });
+        function dadosIncluidos (retorno) {
+            if (retorno.resultado == "ok") { // a operação deu certo?
+                // informar resultado de sucesso
+                alert("Dados incluídos com sucesso!");
+                // limpar os campos
+                $("#campoData").val("");
+                $("#campoResultado").val("");
+                $("#campoUsuarioId").val("");
+                $("#campoPedidoId").val("");
+            } else {
+                // informar mensagem de erro
+                alert(retorno.resultado + ":" + retorno.detalhes);
+            }            
+        }
+        function erroAoIncluir (retorno) {
+            // informar mensagem de erro
+            alert("erro ao incluir dados, verifique o backend: ");
+        }
+    });
 });

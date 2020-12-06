@@ -121,6 +121,58 @@
                     </tbody>
                 </table>
             </div>
+            <div class="modal fade" id="modalIncluirPedidoRealizado" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir Pedidos realizado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="campoUsuarioId">Pessoa</label>
+                                    <select class="form-control" id="campoUsuarioId" 
+                                      aria-describedby="usuarioIdHelp" placeholder="UsuarioId">
+                                    <!-- opções serão preenchidas via javascript -->
+                                    </select> 
+                                    <img id="loading_campoUsuarioId" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando usuario">                                   
+                                    <small id="usuarioIdHelp" class="form-text text-muted">Selecione o usuario que fez o pedido.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoPedidoId">Pedidos</label>
+                                    <select class="form-control" id="campoPedidoId"
+                                    aria-describedby="pedidoIdHelp" placeholder="PedidoId">
+                                    <!-- opções serão preenchidas via javscript -->
+                                    </select>                                    
+                                    <img id="loading_campoPedidoId" src="img/loading_combo.png" class="img-fluid d-none" alt="Carregando pedidos">                                   
+                                    <small id="pedidoIdHelp" class="form-text text-muted">Selecione o pedido cujo resultado será informado.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoData">Data</label>
+                                    <input type="date" class="form-control" id="campoData"
+                                        aria-describedby="dataHelp" placeholder="Data">
+                                    <small id="dataHelp" class="form-text text-muted">Em qual data foi realizado o pedido?</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="campoResultado">Resultado</label>
+                                    <input type="text" class="form-control" id="campoResultado"
+                                        aria-describedby="resultadoHelp" placeholder="Resultado">
+                                    <small id="resultadoHelp" class="form-text text-muted">Informe o valor do resultado.</small>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="btIncluirPedidoRealizado" type="button" class="btn btn-primary">Incluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

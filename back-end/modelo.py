@@ -17,7 +17,7 @@ class Pedidos(db.Model):
     desejo = db.Column(db.String(254)) 
     valor = db.Column(db.String(254)) 
     def __str__(self):
-        return f"{self.desejo} [{self.id}] ({self.valor})"  
+        return f"{self.desejo} [{self.id}], ({self.valor})"  
     def json(self):
         return {
             "id":self.id,
@@ -66,5 +66,5 @@ if __name__ == "__main__":
     db.session.add(e1)
     db.session.add(e2)
     db.session.commit()
-    print(f"Exame realizado: {e1}")
-    print(f"Exame realizado em json: {e1.json()}")
+    print(f"pedido realizado: {e1}")
+    print(f"pedido realizado em json: {e1.json()}")
